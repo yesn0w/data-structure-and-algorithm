@@ -1,2 +1,4 @@
-package class01;public class check {
+package class01;
+
+public class check {
 }
