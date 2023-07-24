@@ -9,4 +9,12 @@ public class FindOddTimes {
         }
         System.out.println(eor);
     }
+
+    public static void perm1(int[] arr) {
+        int eor = 0;
+        for (int i : arr) {
+            eor ^= i;
+        }
+        System.out.println(eor);
+    }
 }
