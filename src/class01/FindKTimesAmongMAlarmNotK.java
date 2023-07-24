@@ -2,10 +2,10 @@ package class01;
 
         import java.util.*;
 
-public class FindKTimesAmongMReturnNotK {
+public class FindKTimesAmongMAlarmNotK {
 
     // k < m
-    public static int findKTimesAmongMReturnNotK(int[] arr, int k, int m) {
+    public static int findKTimesAmongMAlarmNotK(int[] arr, int k, int m) {
         // int: 8 byte, 32 bits
         int[] bits = new int[32];
         for (int i = 0; i < arr.length; i++) {
@@ -104,7 +104,7 @@ public class FindKTimesAmongMReturnNotK {
             int m = k + (int) (Math.random() * maxBigger) + 1;
             int[] arr = generateRandomArray(maxNumOfNum, maxValue, k, m);
 //            System.out.println(Arrays.toString(arr));
-            if (findKTimesAmongMReturnNotK(arr, k, m) != toCompare(arr, k, m)) {
+            if (findKTimesAmongMAlarmNotK(arr, k, m) != toCompare(arr, k, m)) {
                 System.out.println("错啦！");
             }
         }
