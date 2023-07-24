@@ -1,8 +1,8 @@
 package class01;
 
-public class EvenTimesOddTimes {
+public class FindOddTimes {
 
-    public static void evenTimesOddTimes(int[] arr) {
+    public static void findOddTimes(int[] arr) {
         int eor = 0;
         for (int i = 0; i < arr.length; i++) {
             eor ^= arr[i];
