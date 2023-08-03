@@ -1,6 +1,6 @@
 package class08;
 
-public class c01_Trie {
+public class C01_Trie {
 
     public static class Trie {
 
@@ -31,7 +31,7 @@ public class c01_Trie {
         }
 
         public int countWordsStartingWith(String pre) {
-
+            return 0;
         }
     }
 
