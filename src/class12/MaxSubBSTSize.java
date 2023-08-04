@@ -24,28 +24,29 @@ public class MaxSubBSTSize {
         if (leftInfo != null) {
             min = Math.min(min, leftInfo.min);
             max = Math.max(max, leftInfo.max);
+            size = Math.max(size, leftInfo.size);
         }
         if (rightInfo != null) {
             min = Math.min(min, rightInfo.min);
             max = Math.max(max, rightInfo.max);
+            size = Math.max(size, rightInfo.size);
         }
-        // 这样有问题，因为可能返回null
-        // int min = Math.min(node.value, Math.min(leftInfo.min, rightInfo.min));
-        // int max = Math.max(node.value, Math.max(leftInfo.max, rightInfo.max));
-        if (leftInfo != null && rightInfo != null) {
-            if (leftInfo.isBST && !rightInfo.isBST) {
-                size = leftInfo.size;
-            } else if (leftInfo != null && rightInfo != null && !leftInfo.isBST && rightInfo.isBST) {
-                size = rightInfo.size;
-            } else if (leftInfo != null && rightInfo != null && leftInfo.isBST && rightInfo.isBST) {
-                if (node.value > leftInfo.max && node.value < rightInfo.min) {
-                    isBST = true;
-                    size = leftInfo.size + rightInfo.size + 1;
-                }
-                else {
-                    isBST = true;
-                    size = Math.max(leftInfo.size, rightInfo.size);
-                }
+        /*
+         这样有问题，因为可能返回null
+         int min = Math.min(node.value, Math.min(leftInfo.min, rightInfo.min));
+         int max = Math.max(node.value, Math.max(leftInfo.max, rightInfo.max));
+        */
+        if (leftInfo == null && rightInfo == null) {
+            size = 1;
+            isBST = true;
+        }
+        if (leftInfo != null && rightInfo == null) {
+
+        }
+        if (leftInfo != null && rightInfo != null && leftInfo.isBST && rightInfo.isBST) {
+            if (node.value > leftInfo.max && node.value < rightInfo.min) {
+                isBST = true;
+                size = leftInfo.size + rightInfo.size + 1;
             }
         }
 
