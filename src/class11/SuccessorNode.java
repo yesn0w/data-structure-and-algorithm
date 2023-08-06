@@ -1,33 +1,21 @@
 package class11;
 
+import genericmethods.TreeElements.*;
+
 public class SuccessorNode {
 
-    public static class Node {
-        public int value;
-        public Node left;
-        public Node right;
-        public Node parent;
-
-        public Node(int value) {
-            this.value = value;
-            left = null;
-            right = null;
-            parent = null;
-        }
-    }
-
     // 求中序遍历下，当前节点的下一个节点
-    public static Node successorNode(Node node) {
-        if (node.right != null) {
-            Node cur = node.right;
+    public static NodeWithParent successorNode(NodeWithParent nodeWithParent) {
+        if (nodeWithParent.right != null) {
+            NodeWithParent cur = nodeWithParent.right;
             while (cur.left != null) {
                 cur = cur.left;
             }
             return cur;
         }
-        Node cur = node;
+        NodeWithParent cur = nodeWithParent;
         while (cur.parent != null) {
-            Node parent = cur.parent;
+            NodeWithParent parent = cur.parent;
             if (cur == parent.left) {
                 return parent;
             }

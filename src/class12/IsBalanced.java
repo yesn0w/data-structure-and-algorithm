@@ -1,6 +1,6 @@
 package class12;
 
-import genericmethods.NodeType.*;
+import genericmethods.TreeElements.*;
 
 public class IsBalanced {
 
@@ -14,21 +14,21 @@ public class IsBalanced {
         }
     }
 
-    public static boolean isBalanced(Node head) {
+    public static boolean isBalanced(NodeWithParent head) {
         if (head == null) {
             return true;
         }
         return process(head).isBalanced;
     }
 
-    public static Info process(Node node) {
-        if (node == null) {
+    public static Info process(NodeWithParent nodeWithParent) {
+        if (nodeWithParent == null) {
             return new Info(true, 0);
         }
         boolean isBalanced = true;
         int height = 1;
-        Info leftInfo = process(node.left);
-        Info rightInfo = process(node.right);
+        Info leftInfo = process(nodeWithParent.left);
+        Info rightInfo = process(nodeWithParent.right);
         isBalanced = leftInfo.isBalanced & rightInfo.isBalanced & (Math.abs(leftInfo.height - rightInfo.height) < 2);
         height += Math.max(leftInfo.height, rightInfo.height);
         return new Info(isBalanced, height);

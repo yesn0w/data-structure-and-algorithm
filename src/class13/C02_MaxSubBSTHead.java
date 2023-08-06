@@ -1,18 +1,18 @@
 package class13;
 
-import genericmethods.NodeType.*;
+import genericmethods.TreeElements.*;
 
 public class C02_MaxSubBSTHead {
 
-    public static Node maxSubBSTHead(Node head) {
-        return
+    public static NodeWithParent maxSubBSTHead(NodeWithParent head) {
+        return null;
     }
 
-    public static Info process(Node node) {
-
+    public static Info process(NodeWithParent nodeWithParent) {
+        return null;
     }
 
     public static class Info {
-        public
+        public int value;
     }
 }

@@ -2,20 +2,9 @@ package class11;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import genericmethods.TreeElements.*;
 
 public class SerializeDeserializeTree {
-
-    public static class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int value) {
-            this.value = value;
-            left = null;
-            right = null;
-        }
-    }
 
     public static void serializeTree(Node head) {
         LinkedList<String> list = new LinkedList<>();

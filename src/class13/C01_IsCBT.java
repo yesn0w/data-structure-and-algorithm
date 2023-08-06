@@ -1,26 +1,26 @@
 package class13;
 
-import genericmethods.NodeType.*;
+import genericmethods.TreeElements.*;
 
 public class C01_IsCBT {
 
 
-    public static boolean isCBT(Node head) {
+    public static boolean isCBT(NodeWithParent head) {
         if (head == null) {
             return true;
         }
         return false;
     }
 
-    public static Info process(Node node) {
-        if (node == null) {
+    public static Info process(NodeWithParent nodeWithParent) {
+        if (nodeWithParent == null) {
             return new Info(true, true, 0);
         }
         boolean isFull = false;
         boolean isCBT = false;
         int height = 1;
-        Info leftInfo = process(node.left);
-        Info rightInfo = process(node.right);
+        Info leftInfo = process(nodeWithParent.left);
+        Info rightInfo = process(nodeWithParent.right);
         height += (Math.max(leftInfo.height, rightInfo.height));
         isFull = leftInfo.isFull && rightInfo.isFull && leftInfo.height == rightInfo.height;
         if (leftInfo.isFull && rightInfo.isFull && leftInfo.height == rightInfo.height) {

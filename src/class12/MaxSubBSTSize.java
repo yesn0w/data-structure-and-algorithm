@@ -1,26 +1,26 @@
 package class12;
 
-import genericmethods.NodeType.*;
+import genericmethods.TreeElements.*;
 
 public class MaxSubBSTSize {
 
-    public static int maxSubBSTSize(Node head) {
+    public static int maxSubBSTSize(NodeWithParent head) {
         if (head == null) {
             return 0;
         }
         return process(head).size;
     }
 
-    public static Info process(Node node) {
-        if (node == null) {
+    public static Info process(NodeWithParent nodeWithParent) {
+        if (nodeWithParent == null) {
             return null;
         }
-        Info leftInfo = process(node.left);
-        Info rightInfo = process(node.right);
+        Info leftInfo = process(nodeWithParent.left);
+        Info rightInfo = process(nodeWithParent.right);
         boolean isBST = false;
         int size = 0;
-        int min = node.value;
-        int max = node.value;
+        int min = nodeWithParent.value;
+        int max = nodeWithParent.value;
         if (leftInfo != null) {
             min = Math.min(min, leftInfo.min);
             max = Math.max(max, leftInfo.max);
@@ -44,7 +44,7 @@ public class MaxSubBSTSize {
 
         }
         if (leftInfo != null && rightInfo != null && leftInfo.isBST && rightInfo.isBST) {
-            if (node.value > leftInfo.max && node.value < rightInfo.min) {
+            if (nodeWithParent.value > leftInfo.max && nodeWithParent.value < rightInfo.min) {
                 isBST = true;
                 size = leftInfo.size + rightInfo.size + 1;
             }

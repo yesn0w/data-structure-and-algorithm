@@ -1,25 +1,25 @@
 package class12;
 
-import genericmethods.NodeType.*;
+import genericmethods.TreeElements.*;
 
 public class IsBST {
 
-    public static boolean isBST(Node head) {
+    public static boolean isBST(NodeWithParent head) {
         if (head == null) {
             return true;
         }
         return process(head).isBST;
     }
 
-    public static Info process(Node node) {
-        if (node == null) {
+    public static Info process(NodeWithParent nodeWithParent) {
+        if (nodeWithParent == null) {
             return null;
         }
         boolean isBST = true;
-        int min = node.value;
-        int max = node.value;
-        Info leftInfo = process(node.left);
-        Info rightInfo = process(node.right);
+        int min = nodeWithParent.value;
+        int max = nodeWithParent.value;
+        Info leftInfo = process(nodeWithParent.left);
+        Info rightInfo = process(nodeWithParent.right);
         if (leftInfo != null) {
             min = Math.min(min, leftInfo.min);
             max = Math.max(max, leftInfo.max);
@@ -30,11 +30,11 @@ public class IsBST {
         }
         if (leftInfo != null) {
             isBST &= leftInfo.isBST;
-            isBST &= (node.value > leftInfo.max);
+            isBST &= (nodeWithParent.value > leftInfo.max);
         }
         if (rightInfo != null) {
             isBST &= rightInfo.isBST;
-            isBST &= (node.value < rightInfo.min);
+            isBST &= (nodeWithParent.value < rightInfo.min);
         }
         return new Info(isBST, min, max);
     }

@@ -1,6 +1,10 @@
-Queue
+Queue/PriorityQueue
     add
     remove
 
     offer
     poll
+
+Stack
+    push
+    pop

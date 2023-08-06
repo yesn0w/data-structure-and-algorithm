@@ -1,6 +1,6 @@
 package genericmethods;
 
-public class NodeType {
+public class TreeElements {
 
     public static class Node {
         public int value;
