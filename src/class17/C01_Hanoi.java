@@ -1,6 +1,6 @@
 package class17;
 
-public class Hanoi {
+public class C01_Hanoi {
 
     public static void hanoi(int n) {
         if (n > 0) {

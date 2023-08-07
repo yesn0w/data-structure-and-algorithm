@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
 
-public class Prim {
+public class C05_Prim {
 
     public static class EdgeComparator implements Comparator<Edge> {
         @Override
