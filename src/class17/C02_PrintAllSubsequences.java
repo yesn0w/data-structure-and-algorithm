@@ -8,6 +8,9 @@ import java.util.Set;
 public class C02_PrintAllSubsequences {
 
     public static List<String> printAllSubsequences(String str) {
+        if (str == null) {
+            return new ArrayList<>();
+        }
         char[] s = str.toCharArray();
         List<String> res = new ArrayList<>();
         f1(s, 0, res, "");
@@ -26,6 +29,9 @@ public class C02_PrintAllSubsequences {
     }
 
     public static List<String> printAllSubsequencesNoRepeat(String str) {
+        if (str == null) {
+            return new ArrayList<>();
+        }
         char[] s = str.toCharArray();
         List<String> res = new ArrayList<>();
         Set<String> set = new HashSet<>();
