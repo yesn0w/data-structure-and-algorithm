@@ -59,11 +59,11 @@ public class HeapGreater<T> {
         if (obj != replace) {
             heap.set(index, replace);
             indexMap.put(replace, index);
-            resign(replace);
+            sift(replace);
         }
     }
 
-    public void resign(T obj) {
+    public void sift(T obj) {
         heapInsert(indexMap.get(obj));
         heapify(indexMap.get(obj));
     }
