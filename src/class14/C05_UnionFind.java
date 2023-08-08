@@ -38,6 +38,9 @@ public class C05_UnionFind {
         public void union(V a, V b) {
             V aFather = findFather(a);
             V bFather = findFather(b);
+            if (aFather == null || bFather == null) {
+                return;
+            }
             if (aFather != bFather) {
                 int aFatherSize = size.get(aFather);
                 int bFatherSize = size.get(bFather);
