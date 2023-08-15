@@ -36,6 +36,12 @@ public class TakingCards {
         }
         int[][] fMaxMEMs = new int[arr.length][arr.length];
         int[][] sMaxMEMs = new int[arr.length][arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                fMaxMEMs[i][j] = -1;
+                sMaxMEMs[i][j] = -1;
+            }
+        }
         return Math.max(fMaxMEMs[0][arr.length - 1], fMaxMEMs[0][arr.length - 1]);
     }
 
@@ -44,10 +50,14 @@ public class TakingCards {
             fMaxMEMs[l][r] = arr[l];
             return arr[l];
         }
+
     }
 
     public static int sMaxMEM(int[] arr, int l, int r, int[][] fMaxMEMs, int[][] sMaxMEMs) {
-
+        if (l == r) {
+            sMaxMEMs[l][r] = 0;
+            return 0;
+        }
     }
     // 严格动态规划
 
