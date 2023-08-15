@@ -1,32 +1,32 @@
 package class18;
 
-public class RobotWalk {
+public class C01_RobotWalk {
 
     // 暴力递归
     // 1~N个位置，起始点start，目标点aim，恰好K步到
-    public static int robotWalk1(int N, int start, int aim, int K) {
+    public static int robotWalkBF(int N, int start, int aim, int K) {
         if ((N < 2 && K > 0) || start < 1 || start > N || aim < 1 || aim > N || K < 1) {
             return -1;
         }
-        return process1(N, start, aim, K);
+        return processBF(N, start, aim, K);
     }
 
-    public static int process1(int N, int cur, int aim, int rest) {
+    public static int processBF(int N, int cur, int aim, int rest) {
         if (rest == 0) {
             return aim == cur ? 1 : 0;
         }
         if (cur == 1) {
-            return process1(N, 2, aim, rest - 1);
+            return processBF(N, 2, aim, rest - 1);
         }
         else if (cur == N) {
-            return process1(N, N - 1, aim, rest - 1);
+            return processBF(N, N - 1, aim, rest - 1);
         }
         else {
-            return process1(N, cur - 1, aim, rest - 1) + process1(N, cur + 1, aim, rest - 1);
+            return processBF(N, cur - 1, aim, rest - 1) + processBF(N, cur + 1, aim, rest - 1);
         }
     }
     // 自顶向下的动态规划（傻缓存）
-    public static int robotWalk2(int N, int start, int aim, int K) {
+    public static int robotWalkMEM(int N, int start, int aim, int K) {
         if ((N < 2 && K > 0) || start < 1 || start > N || aim < 1 || aim > N || K < 1) {
             return -1;
         }
@@ -36,10 +36,10 @@ public class RobotWalk {
                 res[i][j] = -1;
             }
         }
-        process2(N, start, aim, K, res);
+        processMEM(N, start, aim, K, res);
         return res[aim][K];
     }
-    public static int process2(int N, int cur, int aim, int rest, int[][] res) {
+    public static int processMEM(int N, int cur, int aim, int rest, int[][] res) {
         if (rest == 0) {
             return aim == cur ? 1 : 0;
         }
@@ -48,19 +48,19 @@ public class RobotWalk {
         }
         int ans = 0;
         if (cur == 1) {
-            ans =  process2(N, 2, aim, rest - 1, res);
+            ans =  processMEM(N, 2, aim, rest - 1, res);
         }
         else if (cur == N) {
-            ans = process2(N, N - 1, aim, rest - 1, res);
+            ans = processMEM(N, N - 1, aim, rest - 1, res);
         }
         else {
-            ans = process2(N, cur - 1, aim, rest - 1, res) + process2(N, cur + 1, aim, rest - 1, res);
+            ans = processMEM(N, cur - 1, aim, rest - 1, res) + processMEM(N, cur + 1, aim, rest - 1, res);
         }
         res[cur][rest] = ans;
         return ans;
     }
     // 严格动态规划
-    public static int robotWalk3(int N, int start, int aim, int K) {
+    public static int robotWalkDP(int N, int start, int aim, int K) {
         if ((N < 2 && K > 0) || start < 1 || start > N || aim < 1 || aim > N || K < 1) {
             return -1;
         }
