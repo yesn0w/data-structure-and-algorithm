@@ -2,7 +2,7 @@ package class01;
 
 import java.util.Arrays;
 
-public class SelectionSort {
+public class C01_SelectionSort {
 	
 	private static void sort(int[] arr) {
 		if (arr == null || arr.length < 2) {

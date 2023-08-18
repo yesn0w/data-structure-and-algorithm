@@ -4,7 +4,7 @@ import genericmethods.Duishuqi;
 
 import java.util.Arrays;
 
-public class InsertionSort {
+public class C03_InsertionSort {
 
     public static void sort(int[] arr) {
         if (arr == null || arr.length < 2) {

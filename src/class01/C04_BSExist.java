@@ -1,6 +1,6 @@
 package class01;
 
-public class BSExist {
+public class C04_BSExist {
     public static boolean exist(int[] arr, int target) {
         if (arr == null || arr.length == 0) {
             return false;

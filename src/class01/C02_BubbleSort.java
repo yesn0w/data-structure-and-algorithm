@@ -2,7 +2,7 @@ package class01;
 
 import java.util.Arrays;
 
-public class BubbleSort {
+public class C02_BubbleSort {
 
     public static void sort(int[] arr) {
         if (arr == null || arr.length < 2) {

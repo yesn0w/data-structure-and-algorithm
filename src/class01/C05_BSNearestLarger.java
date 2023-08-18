@@ -1,6 +1,6 @@
 package class01;
 
-public class BSNearestLarger {
+public class C05_BSNearestLarger {
 
     public static int nearestLarger(int[] arr, int target) {
         if (arr == null || arr.length == 0) {
