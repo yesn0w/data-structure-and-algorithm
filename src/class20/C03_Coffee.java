@@ -1,10 +1,9 @@
 package class20;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Coffee {
+public class C03_Coffee {
 
     /**
      * 从0时间点开始，让n个人喝咖啡，做好就能喝，瞬间喝完，杯子空了，可以直接做下一杯
@@ -28,6 +27,15 @@ public class Coffee {
         return res;
     }
 
+    /**
+     * 对于当前这个人来说，要么杯子刷干净，要么杯子自己晾干净
+     * 需要一个数组表示所有杯子，可用的时间点，最开始的时候是int[] available = arr
+     * 然后把available排序(暴力方法不排序)，第一个就是可用的时间，然后把这个杯子洗完，或者挥发之后，再加上他做好一杯咖啡的时间，放回available数组里
+     * 需要当前这个人喝完的时间点t
+     * 如果杯子刷干净，那么是取t1 = Math.max(t, 刷杯机空余出来) + a
+     * 如果杯子自然挥发，那么是t2 = t + b
+     * 取最小Math.min(t1, t2)
+     */
     public static int wash(int[] drink, int index, int a, int b, int available) {
         if (index == drink.length) {
             return 0;
@@ -44,6 +52,15 @@ public class Coffee {
         return Math.min(res1, res2);
     }
 
+    /**
+     * 做咖啡，喝咖啡，承接上一题，杯子有无数个，不是说一个人喝完之后就把这个杯子洗完之后重复用，
+     * 而是每次都用一个新的杯子，然后再把所有杯子洗完，所花的最短的时间
+     * @param arr 每个咖啡机冲一杯咖啡的时间
+     * @param n n个人要喝咖啡
+     * @param a 洗杯机洗一个杯子需要a时间
+     * @param b 一个杯子自然挥发干净需要b时间
+     * @return 所有人喝到咖啡的最少时间
+     */
     public static int drinkNWash(int[] arr, int n, int a, int b) {
         int[] drink = drinkPQ(arr, n);
         int res = wash(drink, 0, a, b, 0);
@@ -84,8 +101,6 @@ public class Coffee {
         return dp[0][0];
     }
 
-
-
     public static class CoffeeMaker {
         private int start;
         private int brew;
@@ -102,71 +117,4 @@ public class Coffee {
             return (o1.start + o1.brew) - (o2.start + o2.brew);
         }
     }
-
-
-    /**
-     * 做咖啡，喝咖啡，承接上一题，杯子有无数个，不是说一个人喝完之后就把这个杯子洗完之后重复用，
-     * 而是每次都用一个新的杯子，然后再把所有杯子洗完，所花的最短的时间
-     * @param arr 每个咖啡机冲一杯咖啡的时间
-     * @param n n个人要喝咖啡
-     * @param a 洗杯机洗一个杯子需要a时间
-     * @param b 一个杯子自然挥发干净需要b时间
-     * @return 所有人喝到咖啡的最少时间
-     */
-    public static int right(int[] arr, int n, int a, int b) {
-        int[] drink = new int[n];
-        return process(arr, 0, n, a, b, drink);
-    }
-
-
-    // 从第cur个人开始往后，所有杯子刷干净的最小时间
-
-    /**
-     *
-     * @param arr
-     * @param cur
-     * @param n
-     * @param a
-     * @param b
-     * @param drink drink代表的是这个人喝的时间点
-     * @param available
-     * @return
-     */
-    public static int process(int[] arr, int cur, int n, int a, int b, int[] drink, int[] available) {
-        if (cur == n) {
-            int[] drinkSorted = Arrays.copyOf(drink, cur);
-            Arrays.sort(drinkSorted);
-            return
-        }
-        int time = Integer.MAX_VALUE;
-        for (int i = 0; i < arr.length; i++) {
-            int brew = arr[i];
-            int pre = available[i];
-            drink[cur] = pre + brew;
-            available[i] = pre + brew;
-            time = Math.min(time, forceMake(cur + 1));
-            // 归位
-            drink[cur] = 0;
-            times[i] = pre;
-        }
-        /**
-         * 对于当前这个人来说，要么杯子刷干净，要么杯子自己晾干净
-         * 需要一个数组表示所有杯子，可用的时间点，最开始的时候是int[] available = arr
-         * 然后把available排序(暴力方法不排序)，第一个就是可用的时间，然后把这个杯子洗完，或者挥发之后，再加上他做好一杯咖啡的时间，放回available数组里
-         * 需要当前这个人喝完的时间点t
-         * 如果杯子刷干净，那么是取t1 = Math.max(t, 刷杯机空余出来) + a
-         * 如果杯子自然挥发，那么是t2 = t + b
-         * 取最小Math.min(t1, t2)
-         */
-        /**
-         * pre表示available时间
-         */
-        for (int i = 0; i < arr.length; i++) {
-            int brew = arr[i];
-            int pre = times[i];
-            drink[cur] = pre + brew;
-            times[i] = pre + brew;
-        }
-    }
-
 }
