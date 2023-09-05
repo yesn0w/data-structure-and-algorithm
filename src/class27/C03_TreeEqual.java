@@ -4,7 +4,7 @@ import genericmethods.TreeElements.*;
 
 import java.util.ArrayList;
 
-public class TreeEqual {
+public class C03_TreeEqual {
 
     public static boolean isSubtree(Node big, Node small) {
         if (small == null) {

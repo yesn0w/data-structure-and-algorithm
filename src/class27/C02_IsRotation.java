@@ -1,6 +1,6 @@
 package class27;
 
-public class IsRotation {
+public class C02_IsRotation {
 
     /**
      * 看a是不是b的旋转
