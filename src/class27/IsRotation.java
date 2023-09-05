@@ -9,7 +9,7 @@ public class IsRotation {
      * @return
      */
     public static boolean isRotation(String a, String b) {
-        if (a == null || b == null || a.length() != b.length()) {
+        if (a == null || b == null || a.length() == 0 || a.length() != b.length()) {
             return false;
         }
         String b2 = b + b;
