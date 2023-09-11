@@ -4,6 +4,11 @@ import genericmethods.TreeElements.*;
 
 public class MorrisTraversal {
 
+    /**
+     * 为了将树的遍历在时间复杂度为O(N)的前提下，空间复杂度提高到O(1)
+     * 一般套路：先用递归套路，再用morris优化
+     * @param head 根节点
+     */
     public static void morris(Node head) {
         if (head == null) {
             return;
