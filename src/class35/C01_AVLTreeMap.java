@@ -90,28 +90,28 @@ public class C01_AVLTreeMap {
         }
 
         private AVLNode<K, V> delete(AVLNode<K, V> cur, K key) {
-
+            return null;
         }
 
         private AVLNode<K, V> findLastIndex(K key) {
-
+            return null;
         }
 
         private AVLNode<K, V> findLastNoSmallIndex(K key) {
-
+            return null;
         }
 
         private AVLNode<K, V> findLastNoBigIndex(K key) {
-
+            return null;
         }
 
 
         public int size() {
-
+            return 0;
         }
 
         public boolean containsKey(K key) {
-
+            return false;
         }
 
         public void put(K key, V value) {
@@ -123,23 +123,23 @@ public class C01_AVLTreeMap {
         }
 
         public V get(K key) {
-
+            return null;
         }
 
         public K firstKey() {
-
+            return null;
         }
 
         public K lastKey() {
-
+            return null;
         }
 
         public K floorKey(K key) {
-
+            return null;
         }
 
         public K ceilingKey(K key) {
-
+            return null;
         }
     }
 }

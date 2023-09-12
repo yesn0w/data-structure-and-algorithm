@@ -27,6 +27,7 @@ public class AppleMinBags {
         for (int i = 0; i <= 100; i++) {
             System.out.println(i + ": " + minBagsBF(i));
         }
+        return 0;
     }
 
     public static void main(String[] args) {
