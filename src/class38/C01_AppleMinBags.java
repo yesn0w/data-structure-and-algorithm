@@ -1,6 +1,6 @@
 package class38;
 
-public class AppleMinBags {
+public class C01_AppleMinBags {
 
     /**
      * 要不一袋装8个，要不一袋装6个，
@@ -23,11 +23,25 @@ public class AppleMinBags {
         return -1;
     }
 
+    /**
+     * 18-25: 3 -1 3 -1 3 -1 3 -1
+     * 26-33: 4 -1 4 -1 4 -1 4 -1
+     * @param n 苹果数量
+     * @return 最少袋子数
+     */
     public static int minBagsPatternWatch(int n) {
-        for (int i = 0; i <= 100; i++) {
-            System.out.println(i + ": " + minBagsBF(i));
+        if (n <= 17) {
+            if (n == 6 || n == 8) {
+                return 1;
+            }
+            else if (n == 12 || n == 14 || n == 16) {
+                return 2;
+            }
+            return -1;
         }
-        return 0;
+        else {
+            return (n >> 3) + 1;
+        }
     }
 
     public static void main(String[] args) {
