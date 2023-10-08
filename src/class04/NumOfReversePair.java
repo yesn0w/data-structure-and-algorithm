@@ -1,6 +1,6 @@
 package class04;
 
-import genericmethods.Duishuqi;
+import genericmethods.MatchingMachine;
 
 import java.util.Arrays;
 
@@ -84,9 +84,9 @@ public class NumOfReversePair {
     public static void main(String[] args) {
         int times = 20;
         for (int i = 0; i < times; i++) {
-            int[] arr = Duishuqi.generateRandomArray(20, 100);
-            int[] arr1 = Duishuqi.deepCopyArray(arr);
-            int[] arr2 = Duishuqi.deepCopyArray(arr);
+            int[] arr = MatchingMachine.generateRandomArray(20, 100);
+            int[] arr1 = MatchingMachine.deepCopyArray(arr);
+            int[] arr2 = MatchingMachine.deepCopyArray(arr);
             int a = numOfReversePair(arr1);
             int b = toCompare(arr2);
             if (a != b) {

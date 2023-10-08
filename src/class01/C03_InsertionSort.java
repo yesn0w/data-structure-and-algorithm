@@ -1,6 +1,6 @@
 package class01;
 
-import genericmethods.Duishuqi;
+import genericmethods.MatchingMachine;
 
 import java.util.Arrays;
 
@@ -32,14 +32,14 @@ public class C03_InsertionSort {
     public static void main(String[] args) {
         boolean result = true;
         for (int i = 0; i < 5; i++) {
-            int[] arr = Duishuqi.generateRandomArray(20, 20);
-            int[] arr1 = Duishuqi.deepCopyArray(arr);
-            int[] arr2 = Duishuqi.deepCopyArray(arr);
+            int[] arr = MatchingMachine.generateRandomArray(20, 20);
+            int[] arr1 = MatchingMachine.deepCopyArray(arr);
+            int[] arr2 = MatchingMachine.deepCopyArray(arr);
             sort(arr1);
             toCompare(arr2);
-            Duishuqi.printArray(arr1);
-            Duishuqi.printArray(arr2);
-            result = Duishuqi.isEqual(arr1, arr2) ? true : false;
+            MatchingMachine.printArray(arr1);
+            MatchingMachine.printArray(arr2);
+            result = MatchingMachine.isEqual(arr1, arr2) ? true : false;
             System.out.println();
         }
         System.out.println(result ? "congratulations!" : "wrong!");

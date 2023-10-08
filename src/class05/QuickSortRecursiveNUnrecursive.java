@@ -1,6 +1,6 @@
 package class05;
 
-import genericmethods.Duishuqi;
+import genericmethods.MatchingMachine;
 import genericmethods.Swap;
 
 import java.util.Arrays;
@@ -105,13 +105,13 @@ public class QuickSortRecursiveNUnrecursive {
     public static void main(String[] args) {
         int times = 20;
         for (int i = 0; i < times; i++) {
-            int[] arr = Duishuqi.generateRandomArray(20, 100);
-            int[] arr1 = Duishuqi.deepCopyArray(arr);
-            int[] arr2 = Duishuqi.deepCopyArray(arr);
+            int[] arr = MatchingMachine.generateRandomArray(20, 100);
+            int[] arr1 = MatchingMachine.deepCopyArray(arr);
+            int[] arr2 = MatchingMachine.deepCopyArray(arr);
 //            quickSortRecursive(arr1);
             quickSortUnrecursiveWithStack(arr1);
             toCompare(arr2);
-            if (!Duishuqi.isEqual(arr1, arr2)) {
+            if (!MatchingMachine.isEqual(arr1, arr2)) {
                 System.out.println(Arrays.toString(arr));
                 System.out.println(Arrays.toString(arr1));
                 System.out.println(Arrays.toString(arr2));

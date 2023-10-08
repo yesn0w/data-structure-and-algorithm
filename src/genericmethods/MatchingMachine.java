@@ -2,7 +2,7 @@ package genericmethods;
 
 import java.util.Arrays;
 
-public class Duishuqi {
+public class MatchingMachine {
 
     public static int[] generateRandomArray(int maxSize, int maxValue) {
         int[] arr = new int[(int) ((maxSize + 1) * Math.random())];
