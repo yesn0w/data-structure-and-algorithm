@@ -2,8 +2,11 @@ package class02;
 
         import java.util.*;
 
-public class FindKTimesAmongMAlarmNotK {
+public class C03_FindKTimesAmongMAlarmNotK {
 
+    /**
+     * 同findKTimesAmongM，但如果要寻找的数不是K次的话，则返回-1
+     */
     // k < m
     public static int findKTimesAmongMAlarmNotK(int[] arr, int k, int m) {
         // int: 8 byte, 32 bits
@@ -24,6 +27,7 @@ public class FindKTimesAmongMAlarmNotK {
                 return -1;
             }
         }
+        // 如果这个K次的数是0，则需要单独处理
         if (ans == 0) {
             int count = 0;
             for (int i = 0; i < arr.length; i++) {

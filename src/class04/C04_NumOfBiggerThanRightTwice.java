@@ -4,8 +4,18 @@ import genericmethods.MatchingMachine;
 
 import java.util.Arrays;
 
-public class NumOfBiggerThanRightTwice {
+public class C04_NumOfBiggerThanRightTwice {
 
+    /**
+     * 在一个数组中，对于任何一个数num，求有多少个(后面的数*2)依然<num，返回总个数
+     * 比如：[3,1,7,0,2]
+     * 3的后面有：1，0
+     * 1的后面有：0
+     * 7的后面有：0，2
+     * 0的后面没有
+     * 2的后面没有
+     * 所以总共有5个
+     */
     public static int numOfBiggerThanRightTwice(int[] arr) {
         if (arr == null || arr.length < 2) {
             return 0;

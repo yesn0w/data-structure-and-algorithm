@@ -1,6 +1,6 @@
 package class03;
 
-public class Array2Queue {
+public class C04_Array2Queue {
 
     public static class MyQueue {
         private int[] arr;

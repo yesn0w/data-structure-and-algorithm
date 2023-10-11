@@ -2,7 +2,7 @@ package class03;
 
 import java.util.Stack;
 
-public class GetMinStack {
+public class C05_GetMinStack {
 
     public static class MinStack {
         private Stack<Integer> normStack;

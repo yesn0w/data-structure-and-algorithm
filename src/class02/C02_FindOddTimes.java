@@ -1,6 +1,10 @@
 package class02;
 
-public class FindOddTimes {
+public class C02_FindOddTimes {
+
+    /**
+     * 一个数组中有一种数出现了奇数次，其他数都出现了偶数次，怎么找到并打印这种数
+     */
 
     public static void findOddTimes(int[] arr) {
         int eor = 0;

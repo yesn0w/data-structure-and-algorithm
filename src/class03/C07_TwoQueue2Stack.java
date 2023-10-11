@@ -4,7 +4,7 @@ package class03;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Queue2Stack {
+public class C07_TwoQueue2Stack {
 
     public static class MyStack {
         public Queue<Integer> queue;

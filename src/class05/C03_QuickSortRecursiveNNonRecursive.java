@@ -6,7 +6,11 @@ import genericmethods.Swap;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class QuickSortRecursiveNUnrecursive {
+public class C03_QuickSortRecursiveNNonRecursive {
+
+    /**
+     * 快速排序的递归实现和非递归实现
+     */
 
     public static void quickSortRecursive(int[] arr) {
         if (arr == null || arr.length < 2) {
@@ -61,7 +65,7 @@ public class QuickSortRecursiveNUnrecursive {
         }
     }
 
-    public static void quickSortUnrecursiveWithStack(int[] arr) {
+    public static void quickSortNonRecursiveWithStack(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
@@ -90,7 +94,7 @@ public class QuickSortRecursiveNUnrecursive {
         }
     }
 
-    public static void quickSortUnrecursiveWithQueue(int[] arr) {
+    public static void quickSortNonRecursiveWithQueue(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
@@ -109,7 +113,7 @@ public class QuickSortRecursiveNUnrecursive {
             int[] arr1 = MatchingMachine.deepCopyArray(arr);
             int[] arr2 = MatchingMachine.deepCopyArray(arr);
 //            quickSortRecursive(arr1);
-            quickSortUnrecursiveWithStack(arr1);
+            quickSortNonRecursiveWithStack(arr1);
             toCompare(arr2);
             if (!MatchingMachine.isEqual(arr1, arr2)) {
                 System.out.println(Arrays.toString(arr));
