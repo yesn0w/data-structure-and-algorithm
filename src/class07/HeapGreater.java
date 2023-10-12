@@ -37,25 +37,34 @@ public class HeapGreater<T> {
     }
 
     public void push(T obj) {
+        // 加两个：arraylist add, indexMap put
         heap.add(obj);
         indexMap.put(obj, heapSize);
+        // 调整一个：heapInsert
         heapInsert(heapSize++);
     }
 
     public T pop() {
+        // 找一个：arraylist get
         T res = heap.get(0);
+        // 交换到最顶
         swap(0, heapSize--);
+        // 减两个：arraylist remove, indexMap remove
         indexMap.remove(res);
         heap.remove(heapSize);
+        // 调整一个
         heapify(0);
         return res;
     }
 
     public void remove(T obj) {
+        // 找两个：arraylist get最后, indexMap get
         T replace = heap.get(--heapSize);
         int index = indexMap.get(obj);
+        // 减两个：arraylist remove, indexMap remove
         heap.remove(heapSize);
         indexMap.remove(obj);
+        // 不相等，放两个，调整两个：arraylist set, indexMap put
         if (obj != replace) {
             heap.set(index, replace);
             indexMap.put(replace, index);
