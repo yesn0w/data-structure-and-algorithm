@@ -4,6 +4,10 @@ import java.util.Comparator;
 
 public abstract class C01_Comparator {
 
+    /**
+     * 比较器使用的code展示
+     */
+
     public static class Student {
         public String name;
         public int id;

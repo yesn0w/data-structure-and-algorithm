@@ -3,7 +3,11 @@ package class06;
 
 import genericmethods.Swap;
 
-public class HeapSort {
+public class C03_HeapSort {
+
+    /**
+     * 堆排序的实现
+     */
 
     public static void heapSort(int[] arr) {
         if (arr == null || arr.length < 2) {
