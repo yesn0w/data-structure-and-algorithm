@@ -25,7 +25,7 @@ public class Practice {
 
         public void build(int l, int r, int index) {
             if (l == r) {
-                sum[index] = arr[index];
+                sum[index] = arr[l];
             }
             int child = (l + r) >> 1;
             build(l, child, index << 1);
