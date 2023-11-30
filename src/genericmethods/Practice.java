@@ -8,7 +8,7 @@ public class Practice {
         private int[] arr;
         private int[] sum;
         private int[] lazy;
-        private int[] update;
+        private boolean[] update;
         private int[] change;
 
 
@@ -47,6 +47,46 @@ public class Practice {
             // 如果没有全包
             // (如果有懒，先下发)
             // 给左右add
+        }
+
+        public void update(int L, int R, int C, int l, int r, int index) {
+            if (L <= l && R >= r) {
+                sum[index] = C * (l - r + 1);
+                lazy[index] = 0;
+                update[index] = true;
+                change[index] = C;
+                return;
+            }
+            int mid = (l + r) >> 1;
+            pushDown(index, mid - l + 1, r - mid);
+            if (L <= mid) {
+                update(L, R, C, l, mid, index << 1);
+            }
+            if (R >= mid + 1) {
+                update(L, R, C, mid + 1, r, index << 1 | 1);
+            }
+            pushUp(index);
+        }
+
+        private void pushDown(int index, int ln, int rn) {
+            if (update[index]) {
+                update[index << 1] = true;
+                update[index << 1 | 1] = true;
+                change[index << 1] = change[index];
+                change[index << 1 | 1] = change[index];
+                sum[index << 1] = change[index] * ln;
+                sum[index << 1 | 1] = change[index] * rn;
+                lazy[index << 1] = 0;
+                lazy[index << 1 | 1] = 0;
+                update[index] = false;
+            }
+            if (lazy[index] != 0) {
+                lazy[index << 1] += lazy[index];
+                sum[index << 1] += lazy[index] * ln;
+                lazy[index << 1 | 1] += lazy[index];
+                sum[index << 1 | 1] += lazy[index] * rn;
+                lazy[index] = 0;
+            }
         }
 
     }
