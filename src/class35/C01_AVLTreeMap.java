@@ -79,10 +79,10 @@ public class C01_AVLTreeMap {
                 return new AVLNode<K, V>(key, value);
             }
             if (key.compareTo(cur.key) < 0) {
-                cur = add(cur.left, key, value);
+                cur.left = add(cur.left, key, value);
             }
             else if (key.compareTo(cur.key) > 0) {
-                cur = add(cur.right, key, value);
+                cur.right = add(cur.right, key, value);
             }
             // 不要忘记调整高度
             cur.height = Math.max(cur.left == null ? 0 : cur.left.height, cur.right == null ? 0 : cur.right.height) + 1;
@@ -90,56 +90,187 @@ public class C01_AVLTreeMap {
         }
 
         private AVLNode<K, V> delete(AVLNode<K, V> cur, K key) {
-            return null;
+            if (key.compareTo(cur.key) < 0) {
+                cur.left = delete(cur.left, key);
+            }
+            else if (key.compareTo(cur.key) > 0) {
+                cur.right = delete(cur.right, key);
+            }
+            else {
+                if (cur.left == null && cur.right == null) {
+                    cur = null;
+                }
+                else if (cur.left == null && cur.right != null) {
+                    cur = cur.right;
+                }
+                else if (cur.left != null && cur.right == null) {
+                    cur = cur.left;
+                }
+                else {
+                    AVLNode<K, V> tmp = cur.left;
+                    while (tmp.right != null) {
+                        tmp = tmp.right;
+                    }
+                    cur.left = delete(cur.left, tmp.key);
+                    tmp.left = cur.left;
+                    tmp.right = cur.right;
+                    cur = tmp;
+                }
+            }
+            if (cur != null) {
+                cur.height = Math.max(cur.left != null ? cur.left.height : 0, cur.right != null ? cur.right.height : 0) + 1;
+            }
+            return maintain(cur);
         }
 
-        private AVLNode<K, V> findLastIndex(K key) {
-            return null;
-        }
 
-        private AVLNode<K, V> findLastNoSmallIndex(K key) {
-            return null;
-        }
 
-        private AVLNode<K, V> findLastNoBigIndex(K key) {
-            return null;
-        }
+        // 普通搜索二叉树会有的基本方法
 
 
         public int size() {
-            return 0;
+            return size;
         }
 
         public boolean containsKey(K key) {
-            return false;
+            if (key == null) {
+                return false;
+            }
+            AVLNode<K, V> lastNode = findLastIndex(key);
+            return lastNode != null && key.compareTo(lastNode.key) == 0 ? true : false;
         }
 
         public void put(K key, V value) {
-
+            if (key == null) {
+                return;
+            }
+            AVLNode<K, V> lastNode = findLastIndex(key);
+            if (lastNode != null && key.compareTo(lastNode.key) == 0) {
+                lastNode.value = value;
+            }
+            else {
+                size++;
+                root = add(root, key, value);
+            }
         }
 
         public void remove(K key) {
-
+            if (key == null) {
+                return;
+            }
+            if (containsKey(key)) {
+                size--;
+                root = delete(root, key);
+            }
         }
 
         public V get(K key) {
+            if (key == null) {
+                return null;
+            }
+            AVLNode<K, V> lastNode = findLastIndex(key);
+            if (lastNode != null && key.compareTo(lastNode.key) == 0) {
+                return lastNode.value;
+            }
             return null;
         }
 
         public K firstKey() {
-            return null;
+            if (root == null) {
+                return null;
+            }
+            AVLNode<K, V> cur = root;
+            while (cur.left != null) {
+                cur = cur.left;
+            }
+            return cur.key;
         }
 
         public K lastKey() {
-            return null;
+            if (root == null) {
+                return null;
+            }
+            AVLNode<K, V> cur = root;
+            while (cur.right != null) {
+                cur = cur.right;
+            }
+            return cur.key;
         }
 
         public K floorKey(K key) {
-            return null;
+            if (key == null) {
+                return null;
+            }
+            AVLNode<K, V> lastNoBigNode = findLastNoBigIndex(key);
+            return lastNoBigNode == null ? null : lastNoBigNode.key;
         }
 
         public K ceilingKey(K key) {
-            return null;
+            if (key == null) {
+                return null;
+            }
+            AVLNode<K, V> lastNoSmallNode = findLastNoSmallIndex(key);
+            return lastNoSmallNode == null ? null : lastNoSmallNode.key;
+        }
+
+        // todo: 这个函数代表什么意思呢？
+        // 猜测：要不就找小于等于Key最大的，要不就找最后一个
+        private AVLNode<K, V> findLastIndex(K key) {
+            AVLNode<K, V> pre = root;
+            AVLNode<K, V> cur = root;
+            while (cur != null) {
+                pre = cur;
+                if (key.compareTo(cur.key) == 0) {
+                    break;
+                }
+                else if (key.compareTo(cur.key) < 0) {
+                    cur = cur.left;
+                }
+                else {
+                    cur = cur.right;
+                }
+            }
+            return pre;
+        }
+
+        // 大于等于key最小的
+        private AVLNode<K, V> findLastNoSmallIndex(K key) {
+            AVLNode<K, V> res = null;
+            AVLNode<K, V> cur = root;
+            while (cur != null) {
+                if (key.compareTo(cur.key) == 0) {
+                    res = cur;
+                    break;
+                }
+                else if (key.compareTo(cur.key) < 0) {
+                    res = cur;
+                    cur = cur.left;
+                }
+                else {
+                    cur = cur.right;
+                }
+            }
+            return res;
+        }
+
+        // 小于等于key最大的
+        private AVLNode<K, V> findLastNoBigIndex(K key) {
+            AVLNode<K, V> res = null;
+            AVLNode<K, V> cur = root;
+            while (cur != null) {
+                if (key.compareTo(cur.key) == 0) {
+                    res = cur;
+                    break;
+                }
+                else if (key.compareTo(cur.key) < 0) {
+                    cur = cur.left;
+                }
+                else {
+                    res = cur;
+                    cur = cur.right;
+                }
+            }
+            return res;
         }
     }
 }

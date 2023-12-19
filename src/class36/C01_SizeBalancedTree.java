@@ -96,10 +96,11 @@ public class C01_SizeBalancedTree {
         private SBTNode<K, V> delete(SBTNode<K, V> cur, K key) {
             cur.size--;
             if (key.compareTo(cur.key) < 0) {
-                delete(cur.left, key);
+                // 可能换头，所以有返回值
+                cur.left = delete(cur.left, key);
             }
             else if (key.compareTo(cur.key) > 0) {
-                delete(cur.right, key);
+                cur.right = delete(cur.right, key);
             }
             else {
                 if (cur.left == null && cur.right == null) {
@@ -133,6 +134,8 @@ public class C01_SizeBalancedTree {
             }
             return cur;
         }
+
+
 
         // 二级核心方法
         // 第多少多少个
