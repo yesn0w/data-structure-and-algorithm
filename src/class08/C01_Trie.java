@@ -81,6 +81,25 @@ public class C01_Trie {
             return cur.end;
         }
 
+
+        public int countWordsStartingWith(String pre) {
+            if (pre == null) {
+                return 0;
+            }
+            char[] preArray = pre.toCharArray();
+            Node cur = root;
+            int index = 0;
+            for (int i = 0; i < preArray.length; i++) {
+                index = preArray[i] - 'a';
+                if (cur.nexts[index] == null) {
+                    return 0;
+                }
+                cur = cur.nexts[index];
+            }
+            return cur.pass;
+        }
+
+
         // 这样写是不对的，因为这有可能是一条路径，并不是单词的结尾，必须要达到结尾才可以，所以要检查node.end
         /**
          * public void int countWordEqualTo(String word) {
@@ -99,24 +118,6 @@ public class C01_Trie {
          *             return i == charArray.length ? 1 : 0;
          *         }
          */
-
-
-        public int countWordsStartingWith(String pre) {
-            if (pre == null) {
-                return 0;
-            }
-            char[] preArray = pre.toCharArray();
-            Node cur = root;
-            int index = 0;
-            for (int i = 0; i < preArray.length; i++) {
-                index = preArray[i] - 'a';
-                if (cur.nexts[index] == null) {
-                    return 0;
-                }
-                cur = cur.nexts[index];
-            }
-            return cur.pass;
-        }
     }
 
 }
